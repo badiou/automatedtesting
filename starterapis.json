@@ -55,8 +55,7 @@
 						"exec": [
 							"pm.test(\"Successful response\", function () {",
 							"    pm.expect(pm.response.text()).to.include(\"email\");",
-							"});",
-							""
+							"});"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -65,9 +64,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"exec": [
-							""
-						],
+						"exec": [],
 						"type": "text/javascript",
 						"packages": {}
 					}
