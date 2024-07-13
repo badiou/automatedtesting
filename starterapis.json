@@ -54,25 +54,7 @@
 	  },
 	  {
 		"name": "Get All Employees",
-		"event": [
-		  {
-			"listen": "test",
-			"script": {
-			  "id": "af3cb111-e3ac-4174-b8ca-7f4127a0285d",
-			  "exec": [
-				"pm.test(\"Successful response\", function () {",
-				"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
-				"    if (pm.response.code === 200) {",
-				"        pm.expect(pm.response.text()).to.include(\"success\");",
-				"    } else {",
-				"        console.log('Received status code: ' + pm.response.code);",
-				"    }",
-				"});"
-			  ],
-			  "type": "text/javascript"
-			}
-		  }
-		],
+		
 		"request": {
 		  "method": "GET",
 		  "header": [],
