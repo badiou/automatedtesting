@@ -1,28 +1,40 @@
-# #!/usr/bin/env python
+#!/usr/bin/env python
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-# Start the browser and navigate to http://automationpractice.com/index.php.
+
+# Démarrer le navigateur et naviguer vers le site web
 driver = webdriver.Chrome()
-url='https://www.saucedemo.com/'
+driver.get('https://www.saucedemo.com/')
 
-print('Navigation vers url:'+url)
-driver.get(url)
-# Find the element using the new syntax and send keys
-username='ourobadiou'
-motdepasse='B44674ng12n42020'
-driver.find_element(By.CSS_SELECTOR, "input[id='user-name']").send_keys(username)
+# Saisir le nom d'utilisateur
+username_input = driver.find_element(By.CSS_SELECTOR, "input#user-name")
+username_input.send_keys("standard_user")  # Utilisateur de test
 
-driver.find_element(By.CSS_SELECTOR, "input[id='password']").send_keys("B44674ng12n42020")
-
-print('Saisie des informations d\'authentification:'+username)
+# Saisir le mot de passe
+password_input = driver.find_element(By.CSS_SELECTOR, "input#password")
+password_input.send_keys("secret_sauce")  # Mot de passe de test
 
 # Trouver le bouton de connexion et cliquer dessus
-#login_button = driver.find_element(By.ID, "input[id='login-button']")
-#login_button.click()
+login_button = driver.find_element(By.CSS_SELECTOR, "input#login-button")
+login_button.click()
+
+# Attendre quelques secondes pour permettre le chargement de la page suivante
+driver.implicitly_wait(5)  # Attente implicite de 5 secondes
+
+# Vérifier la présence des produits sur la page suivante
+try:
+    products = driver.find_elements(By.CSS_SELECTOR, ".inventory_item")
+    if products:
+        print(f"Nombre de produits trouvés : {len(products)}")
+        for product in products:
+            print(product.text)
+    else:
+        print("Aucun produit trouvé sur la page.")
+except Exception as e:
+    print(f"Une erreur s'est produite : {e}")
+
 # Attendre une interaction de l'utilisateur pour fermer le navigateur
 input("Appuyez sur Entrée pour fermer le navigateur...")
 
 # Fermer le navigateur
 driver.quit()
-
-
