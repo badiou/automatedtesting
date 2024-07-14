@@ -3,12 +3,18 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 # Start the browser and navigate to http://automationpractice.com/index.php.
 driver = webdriver.Chrome()
-driver.get('https://www.saucedemo.com/')
+url='https://www.saucedemo.com/'
+
+print('Navigation vers url:'+url)
+driver.get(url)
 # Find the element using the new syntax and send keys
-driver.find_element(By.CSS_SELECTOR, "input[id='user-name']").send_keys("ourobadiou")
+username='ourobadiou'
+motdepasse='B44674ng12n42020'
+driver.find_element(By.CSS_SELECTOR, "input[id='user-name']").send_keys(username)
 
-driver.find_element(By.CSS_SELECTOR, "input[id='password']").send_keys("ourobadiou")
+driver.find_element(By.CSS_SELECTOR, "input[id='password']").send_keys("B44674ng12n42020")
 
+print('Saisie des informations d\'authentification:'+username)
 
 # Trouver le bouton de connexion et cliquer dessus
 #login_button = driver.find_element(By.ID, "input[id='login-button']")
